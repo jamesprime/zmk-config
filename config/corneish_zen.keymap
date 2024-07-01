@@ -11,6 +11,20 @@
 };
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        semicolon {
+            bindings = <&kp SEMI>;
+            key-positions = <32 33>;
+        };
+
+        colon {
+            bindings = <&kp COLON>;
+            key-positions = <33 34>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
