@@ -11,6 +11,20 @@
 };
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        semicolon {
+            bindings = <&kp SEMI>;
+            key-positions = <32 33>;
+        };
+
+        colon {
+            bindings = <&kp COLON>;
+            key-positions = <33 34>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -23,30 +37,13 @@
             //                    | GUI | LWR | SPC |   | BSPC| RSE  | ALT |
 
             bindings = <
-&tog 1     &kp Q  &kp W  &kp E         &kp R      &kp T        &kp Y          &kp U  &kp I      &kp O    &kp P     &kp BACKSPACE
-&kp LCTRL  &kp A  &kp S  &kp D         &kp F      &kp G        &kp H          &kp J  &kp K      &kp L    &kp SQT   &kp ENTER
-&kp LSHFT  &kp Z  &kp X  &kp C         &kp V      &kp B        &kp N          &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                         &kp LEFT_WIN  &lt 2 TAB  &kp SPACE    &kp BACKSPACE  &mo 3  &kp LALT
+&trans  &kp Q  &kp W  &kp E         &kp R      &kp T              &kp Y          &kp U        &kp I      &kp O    &kp P     &trans
+&trans  &kp A  &kp S  &kp D         &kp F      &kp G              &kp H          &kp J        &kp K      &kp L    &kp SQT   &trans
+&trans  &kp Z  &kp X  &kp C         &kp V      &kp B              &kp N          &kp M        &kp COMMA  &kp DOT  &kp FSLH  &trans
+                      &kp LEFT_WIN  &lt 1 TAB  &mt LSHFT SPACE    &kp BACKSPACE  &lt 2 ENTER  &kp LALT
             >;
 
             label = "QWERTY";
-        };
-
-        colemak_layer {
-            label = "COLEMAK";
-
-            // -----------------------------------------------------------------------------------------
-            // | TOG0 |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L   |  U  |  Y  |  ;  | BKSP |
-            // | CTRL |  A  |  R  |  S  |  T  |  G  |   |  M  |  N   |  E  |  I  |  O  |  '   |
-            // | SHFT |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H   |  ,  |  .  |  /  | ESC  |
-            //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
-
-            bindings = <
-&tog 0     &kp Q  &kp W  &kp F     &kp P      &kp B        &kp J    &kp L  &kp U      &kp Y    &kp SEMI  &kp BSPC
-&kp LCTRL  &kp A  &kp R  &kp S     &kp T      &kp G        &kp M    &kp N  &kp E      &kp I    &kp O     &kp SQT
-&kp LSHFT  &kp Z  &kp X  &kp C     &kp D      &kp V        &kp K    &kp H  &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                         &kp LGUI  &lt 2 TAB  &kp SPACE    &kp RET  &mo 3  &kp LALT
-            >;
         };
 
         lower_layer {
@@ -59,10 +56,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6    &kp N7    &kp N8    &kp N9     &kp N0  &kp BSPC
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
-&kp LSHFT   &trans        &trans        &trans        &trans        &trans          &trans    &trans    &trans    &trans     &trans  &trans
-                                        &kp LGUI      &trans        &kp SPACE       &kp RET   &trans    &kp RALT
+&kp TAB    &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6         &kp N7         &kp N8       &kp N9     &kp N0   &trans
+&kp LCTRL  &bt BT_CLR    &trans        &kp DOT       &kp ESC       &trans          &kp LEFT       &kp DOWN       &kp UP       &kp RIGHT  &kp INS  &trans
+&kp LSHFT  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp HOME       &kp PAGE_DOWN  &kp PAGE_UP  &kp END    &kp DEL  &trans
+                                       &kp LGUI      &trans        &kp SPACE       &kp BACKSPACE  &lt 3 ENTER    &kp RALT
             >;
         };
 
@@ -76,10 +73,19 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB    &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp STAR  &kp LPAR  &kp RPAR  &kp BSPC
-&kp LCTRL  &trans    &trans  &trans    &trans    &trans       &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
-&kp LSHFT  &trans    &trans  &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC  &kp RBRC  &kp PIPE  &kp TILDE
-                             &kp LGUI  &trans    &kp SPACE    &kp RET    &trans     &kp RALT
+&kp TAB    &kp EXCL   &kp DOUBLE_QUOTES  &kp NON_US_HASH  &kp DLLR   &kp PRCNT    &kp CARET      &kp AMPS   &kp STAR  &kp LPAR  &kp RPAR       &trans
+&kp LCTRL  &kp GRAVE  &kp TILDE          &kp AT           &kp HASH   &trans       &kp MINUS      &kp EQUAL  &kp LBKT  &kp RBKT  &kp PIPE       &trans
+&kp LSHFT  &trans     &trans             &trans           &trans     &trans       &kp UNDER      &kp PLUS   &kp LBRC  &kp RBRC  &kp BACKSLASH  &trans
+                                         &kp LGUI         &lt 3 TAB  &kp SPACE    &kp BACKSPACE  &trans     &kp RALT
+            >;
+        };
+
+        adjust_layer {
+            bindings = <
+&trans  &trans  &trans  &kp C_BRIGHTNESS_INC  &trans  &kp LC(X)    &kp F2   &trans  &kp C_VOLUME_UP    &trans  &sys_reset  &trans
+&trans  &trans  &trans  &kp C_BRIGHTNESS_DEC  &trans  &kp LC(C)    &kp F5   &trans  &kp C_VOLUME_DOWN  &trans  &trans      &trans
+&trans  &trans  &trans  &trans                &trans  &kp LC(V)    &kp F12  &trans  &kp C_MUTE         &trans  &trans      &trans
+                        &trans                &trans  &trans       &trans   &trans  &trans
             >;
         };
     };
