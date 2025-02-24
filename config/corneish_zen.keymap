@@ -23,6 +23,26 @@
             bindings = <&kp COLON>;
             key-positions = <33 34>;
         };
+
+        combo_shift {
+            bindings = <&sk LEFT_SHIFT>;
+            key-positions = <15 16>;
+        };
+
+        combo_ctrl {
+            bindings = <&sk LCTRL>;
+            key-positions = <14 15>;
+        };
+
+        combo_alt {
+            bindings = <&sk LEFT_ALT>;
+            key-positions = <26 27>;
+        };
+
+        combo_gui {
+            bindings = <&sk LEFT_GUI>;
+            key-positions = <27 28>;
+        };
     };
 
     behaviors {
