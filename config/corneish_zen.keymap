@@ -25,11 +25,33 @@
         };
     };
 
+    behaviors {
+        q_excl: q_excl {
+            compatible = "zmk,behavior-tap-dance";
+            label = "Q_EXCL";
+            #binding-cells = <0>;
+            bindings = <&kp Q>, <&kp EXCLAMATION>;
+        };
+
+        w_dquo: w_dquo {
+            compatible = "zmk,behavior-tap-dance";
+            label = "W_DQUO";
+            #binding-cells = <0>;
+            bindings = <&kp W>, <&kp DOUBLE_QUOTES>;
+        };
+
+        sq_dq: sq_dq {
+            compatible = "zmk,behavior-tap-dance";
+            label = "SQ_DQ";
+            #binding-cells = <0>;
+            bindings = <&kp SINGLE_QUOTE>, <&kp DOUBLE_QUOTES>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-
             // -----------------------------------------------------------------------------------------
             // | TOG1 |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
             // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  '  | ENT  |
